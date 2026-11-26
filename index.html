@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nermin Yusuf</title>
+<meta name="description" content="Dr. Nermin Yusuf: researcher in psycholinguistics and neuroeducation, lecturer of English for academic purposes and scientific methods.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lobster&family=Caveat:wght@400;600;700&family=Pacifico&family=Oswald:wght@400;500;600&family=Bitter:wght@500;700&family=Comic+Neue:ital,wght@0,400;0,700;1,400;1,700&family=Amatic+SC:wght@700&family=Lora:ital,wght@0,500;0,700;1,400&family=Montserrat:wght@600;700;800&family=Courier+Prime&family=Patrick+Hand&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+ --purple:#674EA7;--blue:#0B5394;--green:#38761D;--ink:#212121;
+ --indigo:#351C75;--navy:#1C4587;--plum:#4C1130;--wine:#741B47;--brown:#783F04;--olive:#7F6000;--royal:#1155CC;
+ --night:#17142a;--night2:#221d3b;--paper:#fffdf7;--mist:#f4f2f8;
+ --nav-h:68px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{font-family:"Comic Neue","Comic Sans MS",cursive;color:var(--ink);background:#fff;font-size:19px;line-height:1.65;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+::selection{background:#e6dcff}
+
+/* ---------- progress + nav ---------- */
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--purple),#e0457b,#f2a516,var(--green));z-index:100}
+.nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:90;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(16px,4vw,48px);transition:background .35s,box-shadow .35s,color .35s;color:#fff}
+.nav.solid{background:rgba(255,255,255,.88);backdrop-filter:blur(12px);box-shadow:0 1px 0 rgba(0,0,0,.06);color:var(--ink)}
+.nav.onlight{color:var(--ink)}
+.brand{font-family:Lobster,cursive;font-size:28px;text-decoration:none;white-space:nowrap}
+.brand b{color:#f2a516;font-weight:400}
+.links{display:flex;gap:2px}
+.links a{position:relative;font-family:Inter,sans-serif;font-size:14px;font-weight:500;text-decoration:none;padding:8px 11px;white-space:nowrap;opacity:.82;transition:opacity .2s}
+.links a:hover,.links a.on{opacity:1}
+.links a.on::after{content:"";position:absolute;left:10px;right:10px;bottom:1px;height:7px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 8'%3E%3Cpath d='M1 5 Q8 1 15 5 T30 5 T45 5 T59 5' fill='none' stroke='%23f2a516' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}
+.burger{display:none;background:none;border:0;color:inherit;font:600 15px Inter,sans-serif;cursor:pointer;padding:10px;min-height:44px}
+@media(max-width:1100px){
+ .burger{display:block}
+ .links{position:fixed;top:var(--nav-h);left:0;right:0;flex-direction:column;background:#fff;color:var(--ink);padding:10px 20px 20px;box-shadow:0 20px 40px rgba(0,0,0,.12);transform:translateY(-12px);opacity:0;pointer-events:none;transition:.25s}
+ .links.open{transform:none;opacity:1;pointer-events:auto}
+ .links a{padding:13px 6px;font-size:16px}
+}
+
+/* ---------- pages ---------- */
+.page{display:none}
+.page.on{display:block;animation:pagein .6s ease both}
+@keyframes pagein{from{opacity:0}to{opacity:1}}
+.wrap{width:min(1160px,100% - 2*clamp(18px,5vw,56px));margin:0 auto}
+.narrow{width:min(860px,100% - 2*clamp(18px,5vw,56px));margin:0 auto}
+section{position:relative}
+.band{padding:clamp(56px,8vw,104px) 0}
+.band.tight{padding:clamp(36px,5vw,60px) 0}
+.light{background:#fff}
+.mist{background:var(--mist)}
+.cream{background:#fdf8ee}
+.dark{background:radial-gradient(1200px 500px at 15% 0%,#2c2552 0%,transparent 60%),radial-gradient(900px 500px at 100% 100%,#3a1838 0%,transparent 55%),var(--night);color:#ece9f6}
+.dark::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.07) 1px,transparent 1px);background-size:22px 22px;pointer-events:none}
+.dark>*{position:relative}
+
+/* ribbon headings (the dark Oswald bands of the original) */
+.ribbon{padding:clamp(34px,5vw,54px) 0;text-align:center;background:linear-gradient(135deg,#1d1934,#2d2348 55%,#3b1d3c);color:#fff;overflow:hidden}
+.ribbon h2{font-family:Oswald,sans-serif;font-weight:600;font-size:clamp(26px,3.6vw,40px);letter-spacing:.3px;line-height:1.2}
+.ribbon .eyebrow{font-family:Caveat,cursive;font-size:26px;color:#f7c96b;display:block;margin-bottom:2px}
+.ribbon.light-r{background:var(--mist);color:var(--plum)}
+.ribbon.light-r .eyebrow{color:var(--wine)}
+
+/* page heroes */
+.phero{padding:calc(var(--nav-h) + clamp(60px,9vw,120px)) 0 clamp(60px,8vw,100px);text-align:center;color:#fff;overflow:hidden}
+.phero h1{font-family:Montserrat,sans-serif;font-weight:800;font-size:clamp(36px,6vw,68px);line-height:1.05;letter-spacing:-.5px}
+.phero .quote{margin:26px auto 0;max-width:880px}
+
+/* handwriting quotes */
+.quote{font-family:Caveat,cursive;font-weight:600;font-size:clamp(28px,3.4vw,42px);line-height:1.25;position:relative}
+.quote.pacifico{font-family:Pacifico,cursive;font-weight:400;font-size:clamp(20px,2.4vw,29px);line-height:1.7}
+.qmark{font-family:Lobster,cursive;font-size:110px;line-height:.5;display:block;height:40px;opacity:.35}
+.hand{font-family:Caveat,cursive;font-size:clamp(24px,2.3vw,30px);line-height:1.35}
+
+/* body text styles */
+.story{font-family:"Comic Neue",cursive;font-size:19px;line-height:1.75}
+.story p+p{margin-top:14px}
+.serif{font-family:Lora,Georgia,serif}
+
+/* sticky notes */
+.sticky{--r:-2deg;--c:#fff3a8;position:relative;background:var(--c);padding:26px 22px 22px;font-family:"Patrick Hand",cursive;font-size:20px;line-height:1.35;color:#2b2b2b;box-shadow:0 1px 1px rgba(0,0,0,.08),0 14px 22px -10px rgba(0,0,0,.35);transform:rotate(var(--r));transition:transform .35s cubic-bezier(.2,.8,.2,1.2),box-shadow .35s}
+.sticky::before{content:"";position:absolute;top:-11px;left:50%;width:84px;height:24px;transform:translateX(-50%) rotate(-3deg);background:rgba(255,255,255,.55);box-shadow:0 1px 2px rgba(0,0,0,.12);border-left:1px dashed rgba(0,0,0,.08);border-right:1px dashed rgba(0,0,0,.08)}
+.sticky:hover,.sticky.in:hover{transform:rotate(0) scale(1.04);box-shadow:0 2px 2px rgba(0,0,0,.08),0 22px 30px -12px rgba(0,0,0,.4);z-index:2}
+.sticky.pin::before{width:16px;height:16px;border-radius:50%;top:-6px;background:radial-gradient(circle at 35% 35%,#ff8a8a,#c0262d);border:0;box-shadow:0 2px 3px rgba(0,0,0,.35)}
+.sticky b{font-family:Caveat,cursive;font-size:27px;display:block;line-height:1.1;margin-bottom:6px}
+.y{--c:#fff3a8}.p{--c:#ffd6e8}.b{--c:#d6ecff}.g{--c:#d9f5c9}.o{--c:#ffe1bf}.v{--c:#e7ddff}
+.notes{display:grid;gap:34px 28px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+
+/* photos: always full, never cropped */
+.photo{background:#fff;padding:12px 12px 14px;box-shadow:0 18px 40px -18px rgba(23,20,42,.45),0 2px 6px rgba(0,0,0,.06);border-radius:4px;position:relative}
+.photo img{width:100%;height:auto;border-radius:2px}
+.photo.tilt-l{transform:rotate(-2deg)}.photo.tilt-r{transform:rotate(2deg)}
+.photo .tape{position:absolute;top:-12px;left:50%;width:110px;height:28px;transform:translateX(-50%) rotate(2deg);background:rgba(247,201,107,.55);box-shadow:0 1px 2px rgba(0,0,0,.1)}
+.photo.clean{padding:0;background:none;box-shadow:0 20px 44px -20px rgba(23,20,42,.5);border-radius:14px;overflow:hidden}
+.photo.clean img{border-radius:14px}
+.zoomable{cursor:zoom-in}
+
+/* two column split */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,70px);align-items:center}
+.split.wide-l{grid-template-columns:1.25fr .9fr}
+.split.wide-r{grid-template-columns:.85fr 1.2fr}
+@media(max-width:860px){.split,.split.wide-l,.split.wide-r{grid-template-columns:1fr}}
+
+/* ---------- scroll reveal ---------- */
+.rv{opacity:0;transform:translateY(46px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+.rv.l{transform:translateX(-60px)}.rv.r{transform:translateX(60px)}
+.rv.zoom{transform:scale(.86)}
+.rv.pop{transform:translateY(40px) rotate(calc(var(--r,0deg) - 10deg)) scale(.8)}
+.rv.in{opacity:1;transform:none}
+.rv.pop.in{transform:rotate(var(--r,0deg))}
+.rv.photo.tilt-l.in{transform:rotate(-2deg)}.rv.photo.tilt-r.in{transform:rotate(2deg)}
+.d1{transition-delay:.12s}.d2{transition-delay:.24s}.d3{transition-delay:.36s}.d4{transition-delay:.48s}.d5{transition-delay:.6s}
+.words span{display:inline-block;opacity:0;transform:translateY(.6em);transition:opacity .5s,transform .6s cubic-bezier(.2,.7,.2,1)}
+.words.in span{opacity:1;transform:none}
+.draw{background-image:linear-gradient(transparent 62%,rgba(247,201,107,.55) 62%);background-size:0 100%;background-repeat:no-repeat;transition:background-size 1.2s .4s ease}
+.in .draw,.draw.in{background-size:100% 100%}
+@media(prefers-reduced-motion:reduce){.rv,.words span{opacity:1!important;transform:none!important;transition:none!important}.page.on{animation:none}html{scroll-behavior:auto}}
+
+/* ---------- HOME ---------- */
+#p-home .hero{min-height:100vh;padding:calc(var(--nav-h) + 40px) 0 60px;display:flex;align-items:center;background:radial-gradient(800px 500px at 0% 0%,#efe8ff 0%,transparent 60%),radial-gradient(700px 500px at 100% 30%,#dceeff 0%,transparent 60%),radial-gradient(600px 400px at 50% 110%,#e3f5da 0%,transparent 60%),#fbfaff;overflow:hidden}
+#p-home .hero .split{grid-template-columns:1.1fr .9fr}
+.hi{font-family:Lobster,cursive;color:var(--purple);font-size:clamp(46px,5.5vw,66px);line-height:1;display:inline-block}
+.hi .wave{display:inline-block;animation:wave 2.2s 1s ease-in-out 2;transform-origin:70% 70%}
+@keyframes wave{0%,60%,100%{transform:rotate(0)}10%,30%{transform:rotate(16deg)}20%,40%{transform:rotate(-8deg)}}
+.hero h1{font-family:Lobster,cursive;font-weight:400;color:var(--blue);font-size:clamp(50px,6.6vw,84px);line-height:1.02;margin:10px 0 22px}
+.roles{list-style:none;display:grid;gap:12px}
+.roles li{font-family:Lobster,cursive;color:var(--blue);font-size:clamp(22px,2.3vw,30px);line-height:1.2;padding-left:34px;position:relative}
+.roles li::before{content:"";position:absolute;left:0;top:.42em;width:18px;height:18px;border-radius:50%;background:conic-gradient(var(--purple),#e0457b,#f2a516,var(--green),var(--purple))}
+.roles li.founder{color:var(--green);display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.inline-logo{display:inline-block;width:clamp(170px,16vw,220px)}
+.hero-photo{position:relative;justify-self:center;width:min(440px,100%)}
+
+.hero-photo .sticky{position:absolute;width:190px;font-size:19px;z-index:3}
+.hero-photo .s1{left:-60px;bottom:70px;--r:-7deg}
+.hero-photo .s2{right:-34px;top:-22px;--r:6deg}
+@media(max-width:860px){.hero-photo .s1{left:-6px;bottom:-30px}.hero-photo .s2{right:-6px}#p-home .hero .split{grid-template-columns:1fr}}
+.scrollcue{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);font-family:Caveat,cursive;font-size:22px;color:var(--purple);text-align:center;animation:bob 2s infinite}
+@keyframes bob{50%{transform:translate(-50%,8px)}}
+.home-quote{text-align:center}
+.home-quote .quote{color:#c9b6ff}
+.home-quote .hand{color:#e9e5f5;max-width:900px;margin:34px auto 0}
+.lake{margin-top:-40px}
+.notebook{background:var(--paper);background-image:repeating-linear-gradient(transparent 0 38px,#dfe6f3 38px 39px);border-radius:6px;padding:34px 38px 34px 64px;position:relative;box-shadow:0 18px 40px -22px rgba(0,0,0,.35)}
+.notebook::before{content:"";position:absolute;left:42px;top:0;bottom:0;width:2px;background:#f1a5a5}
+.notebook .hand{line-height:39px;font-size:27px}
+.notebook.blue .hand{color:var(--blue)}
+.notebook.green .hand{color:var(--green)}
+.touch{text-align:center}
+.touch h2{font-family:Bitter,serif;font-size:clamp(24px,3vw,34px)}
+.touch a.mail{display:inline-block;margin-top:14px;font-family:Caveat,cursive;font-size:clamp(30px,4vw,44px);color:#f7c96b;text-decoration:none;border-bottom:2px dashed rgba(247,201,107,.6)}
+.touch a.mail:hover{color:#fff}
+
+/* ---------- INITIATIVES ---------- */
+#p-initiatives{--accent:var(--brown)}
+.init-top{padding-top:calc(var(--nav-h) + 40px);background:linear-gradient(180deg,#f3f7fd,#fff)}
+.vision h2{font-family:Lobster,cursive;font-weight:400;color:#cfe2f3;font-size:clamp(34px,4.6vw,54px)}
+.vision .story{font-size:21px;color:#f6dcbc;max-width:880px;margin:26px auto 0;text-align:center}
+.academy h2{font-family:Montserrat,sans-serif;font-weight:800;color:#3367D6;font-size:clamp(32px,4vw,46px);line-height:1.1;margin-bottom:18px}
+.academy .story{color:#073763;font-size:21px}
+.objectives h2{font-family:Oswald,sans-serif;font-weight:600;color:var(--brown);font-size:clamp(38px,5vw,56px);text-align:center;margin-bottom:44px}
+.objectives .sticky{font-family:"Comic Neue",cursive;font-size:18px;color:var(--olive);padding:30px 24px 24px}
+.objectives .sticky b{font-family:"Comic Neue",cursive;font-weight:700;font-size:20px;color:var(--olive)}
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:Inter,sans-serif;font-weight:600;font-size:16px;text-decoration:none;padding:14px 26px;border-radius:999px;background:#fff;color:var(--night);box-shadow:0 10px 24px -10px rgba(0,0,0,.4);transition:transform .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn.dark-b{background:var(--night);color:#fff}
+
+
+.init-top{position:relative;padding:calc(var(--nav-h) + 50px) 0 70px;background:radial-gradient(700px 400px at 10% 0%,#f3ecff,transparent 60%),radial-gradient(700px 400px at 100% 100%,#e6f3ff,transparent 60%),#fff;overflow:hidden}
+.init-logo{position:relative;z-index:1;max-width:760px}
+.logo-card{background:#fff;border-radius:20px;padding:40px 36px 28px;box-shadow:0 20px 48px -26px rgba(0,0,0,.45);text-align:center}
+.logo-card p{font-family:Caveat,cursive;font-size:24px;color:#674EA7;margin-top:12px}
+/* ---------- RESEARCH ---------- */
+#p-research .phero{background:radial-gradient(900px 500px at 10% 0%,#3d2a7a 0%,transparent 60%),radial-gradient(900px 500px at 100% 100%,#5b1f46 0%,transparent 60%),var(--night)}
+#p-research .phero h1{color:#9fc5f8}
+#p-research .phero .quote{color:#d9c8ff}
+.hotwire{font-family:Caveat,cursive;font-weight:700;color:var(--wine);font-size:clamp(34px,3.8vw,46px);line-height:1.15;margin:22px 0}
+.callout{font-family:"Comic Neue",cursive;font-size:21px;text-align:center;max-width:880px;margin:0 auto;padding:30px 34px;border-radius:18px;background:#fff;box-shadow:0 18px 40px -24px rgba(0,0,0,.35);border:2px dashed #c9b6ff}
+.result h3{font-family:Caveat,cursive;font-size:42px;line-height:1;margin-bottom:12px}
+.neuro .story{color:#e9e5f5}
+.neuro .story .lead{color:#a9c8ff}
+.neuro .tag{font-family:"Amatic SC",cursive;font-weight:700;font-size:1.5em;color:#fff;background:linear-gradient(90deg,#7b5cff,#e0457b);padding:0 10px;border-radius:6px;letter-spacing:1px}
+.vr .story{color:var(--blue)}
+.vr .story i{font-style:italic}
+.eye .story{color:var(--indigo)}
+
+/* ---------- WORKSHOPS ---------- */
+#p-workshops .phero{background:radial-gradient(900px 500px at 90% 0%,#3d2a7a 0%,transparent 60%),radial-gradient(900px 500px at 0% 100%,#173a6b 0%,transparent 60%),var(--night)}
+#p-workshops .phero h1{color:#a4c2f4}
+#p-workshops .phero .quote{color:#f7c96b}
+.video{position:relative;aspect-ratio:16/9;border-radius:16px;overflow:hidden;box-shadow:0 24px 50px -24px rgba(0,0,0,.6);background:#000}
+.video iframe,.video button{position:absolute;inset:0;width:100%;height:100%;border:0}
+.video button{cursor:pointer;background:center/cover no-repeat;display:grid;place-items:center}
+.video button::after{content:"";width:76px;height:76px;border-radius:50%;background:rgba(255,255,255,.92) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M8 5v14l11-7z' fill='%23351C75'/%3E%3C/svg%3E") 54% 50%/34px no-repeat;box-shadow:0 10px 30px rgba(0,0,0,.4);transition:transform .2s}
+.video.zoomv iframe,.video.zoomv button{width:118%;height:118%;left:-9%;top:0;right:auto;bottom:auto}
+.video button:hover::after{transform:scale(1.08)}
+.berlin .story{color:#e9e5f5;text-align:center;font-style:italic;max-width:900px;margin:30px auto 0}
+.berlin-ws h3{font-family:Caveat,cursive;font-weight:700;color:var(--navy);font-size:clamp(34px,3.8vw,44px);line-height:1.1;margin-bottom:14px}
+.berlin-ws .story{color:var(--navy)}
+.achieved h3{font-family:Caveat,cursive;font-weight:700;font-size:40px;text-align:center;margin-bottom:38px}
+.achieved .sticky{font-family:"Comic Neue",cursive;font-size:17.5px;color:var(--indigo)}
+.achieved .sticky b{font-family:"Comic Neue",cursive;font-weight:700;font-size:19px;color:var(--indigo)}
+.wtimeline{position:relative;margin-top:10px}
+.wtimeline::before{content:"";position:absolute;left:118px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--navy),var(--purple),#e0457b)}
+.witem{display:grid;grid-template-columns:100px 1fr;gap:38px;padding:18px 0;position:relative}
+.witem::before{content:"";position:absolute;left:112px;top:30px;width:14px;height:14px;border-radius:50%;background:#fff;border:3px solid var(--purple)}
+.witem .date{font-family:"Amatic SC",cursive;font-weight:700;font-size:28px;color:#8a8a8a;text-align:right;line-height:1.2;padding-top:6px}
+.witem h4{font-family:Bitter,serif;font-weight:700;color:var(--blue);font-size:20px;line-height:1.35}
+.witem p{font-family:Lora,Georgia,serif;font-style:italic;font-size:16.5px;color:#333;margin-top:6px;line-height:1.6}
+@media(max-width:640px){.wtimeline::before{left:8px}.witem{grid-template-columns:1fr;gap:4px;padding-left:34px}.witem::before{left:2px;top:12px}.witem .date{text-align:left}}
+
+/* ---------- TRAJECTORY ---------- */
+#p-trajectory .top{padding-top:calc(var(--nav-h) + 50px);background:radial-gradient(700px 500px at 100% 0%,#e8e0ff 0%,transparent 60%),#fbfaff}
+#p-trajectory .top h1{font-family:Bitter,serif;font-weight:700;color:var(--indigo);font-size:clamp(36px,4.6vw,54px);line-height:1.1;margin-bottom:20px}
+#p-trajectory .top .hand{color:var(--navy)}
+.compass h2{font-family:Bitter,serif;font-weight:700;font-size:clamp(26px,3.4vw,38px);line-height:1.2;color:#fff;text-align:center}
+.compass .quote{color:#d9c8ff;text-align:center;font-weight:400;font-size:clamp(26px,2.8vw,34px);max-width:960px;margin:28px auto 0}
+.orchestra .hand{font-size:clamp(24px,2.2vw,29px)}
+.orchestra .c1{color:#073763}.orchestra .c2{color:#20124D}
+.sec-h{font-family:Bitter,serif;font-weight:700;color:var(--royal);font-size:clamp(30px,3.4vw,40px);margin-bottom:30px;display:flex;align-items:center;gap:14px}
+.sec-h::after{content:"";flex:1;height:2px;background:linear-gradient(90deg,var(--royal),transparent)}
+.jobs{display:grid;gap:26px}
+.job{background:#fff;border-radius:16px;padding:28px 30px;box-shadow:0 14px 36px -24px rgba(0,0,0,.4);border-left:6px solid var(--c,var(--royal))}
+.job h3{font-family:Lora,Georgia,serif;font-weight:700;color:#3f3f3f;font-size:23px;line-height:1.3}
+.job .org{font-family:"Trebuchet MS",Inter,sans-serif;font-weight:700;font-style:italic;color:#6b6b6b;font-size:17px;margin-top:4px}
+.job .when{font-family:Inter,sans-serif;font-style:normal;font-weight:700;color:#666;font-size:14px;background:var(--mist);border-radius:999px;padding:3px 12px;margin-left:6px;white-space:nowrap}
+.job .meta{font-family:Inter,sans-serif;font-size:14.5px;color:#565656;margin-top:8px}
+.job .meta i{font-family:"Trebuchet MS",sans-serif}
+.job h5{font-family:Lora,Georgia,serif;font-weight:700;font-size:17px;color:#444;margin:16px 0 4px}
+.job ul{font-family:Lora,Georgia,serif;font-size:16.5px;color:#4c4c4c;padding-left:22px;line-height:1.6}
+.job details summary{cursor:pointer;font-family:Caveat,cursive;font-size:24px;color:var(--purple);margin-top:10px;list-style:none}
+.job details summary::-webkit-details-marker{display:none}
+.job details summary::before{content:"+ ";}
+.job details[open] summary::before{content:"– ";}
+.achv{list-style:none;display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+.achv li{font-family:Lora,Georgia,serif;color:#555;font-size:17px;line-height:1.55;padding:18px 20px 18px 58px;background:#fff;border-radius:14px;position:relative;box-shadow:0 10px 28px -22px rgba(0,0,0,.45)}
+.achv li::before{content:"";position:absolute;left:18px;top:18px;width:26px;height:26px;border-radius:50%;background:var(--green) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat;transform:scale(0);transition:transform .5s cubic-bezier(.3,1.6,.5,1) .3s}
+.achv li.in::before{transform:scale(1)}
+.skills .sticky{padding:30px 22px 24px}
+.skills .sticky b{font-family:Lora,Georgia,serif;font-weight:700;font-size:20px;color:#3f3f3f;margin-bottom:10px}
+.skills .sticky ul{list-style:none;font-family:"Courier Prime","Courier New",monospace;font-size:15px;line-height:1.5;color:#444}
+.skills .sticky li{padding-left:16px;position:relative;margin:5px 0}
+.skills .sticky li::before{content:"o";position:absolute;left:0}
+
+/* ---------- PUBLICATIONS ---------- */
+#p-publications .phero{background:radial-gradient(900px 500px at 0% 0%,#3d2a7a 0%,transparent 60%),radial-gradient(800px 500px at 100% 100%,#1d3b66 0%,transparent 60%),var(--night);text-align:left}
+#p-publications .phero .split{grid-template-columns:.7fr 1.3fr}
+#p-publications .phero h1{color:#c9b6ff;font-size:clamp(34px,4.4vw,52px)}
+#p-publications .phero .quote{color:#fff;margin:22px 0 0;font-size:clamp(30px,3.5vw,44px)}
+@media(max-width:860px){#p-publications .phero .split{grid-template-columns:1fr}#p-publications .phero .photo{max-width:320px;margin:0 auto}}
+.pubs{display:grid;gap:24px}
+.pub{background:#fff;border-radius:18px;padding:30px 32px 26px;box-shadow:0 16px 40px -28px rgba(0,0,0,.45);position:relative;border:1px solid #eee}
+.pub h3{font-family:Lora,Georgia,serif;font-weight:700;font-size:clamp(19px,1.9vw,23px);line-height:1.35;color:#212121;padding-right:150px}
+.pub h3 a{text-decoration:none;background-image:linear-gradient(#c9b6ff,#c9b6ff);background-size:0 2px;background-position:0 100%;background-repeat:no-repeat;transition:background-size .3s}
+.pub h3 a:hover{background-size:100% 2px}
+.stamp{position:absolute;top:24px;right:26px;font-family:"Amatic SC",cursive;font-weight:700;font-size:25px;color:#0000ff;border:2.5px solid #0000ff;border-radius:6px;padding:0 10px;line-height:1.35;transform:rotate(4deg);opacity:.85;max-width:140px;text-align:center}
+.pub .venue{font-family:"Amatic SC",cursive;font-weight:700;font-size:25px;color:#0000ff;margin-top:6px}
+.pub .abs{font-family:Lora,Georgia,serif;font-size:16.5px;color:#333;line-height:1.7;margin-top:12px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.pub.open .abs{-webkit-line-clamp:unset;display:block}
+.pub .more{margin-top:10px;background:none;border:0;cursor:pointer;font-family:Caveat,cursive;font-size:23px;color:var(--purple);min-height:40px}
+.pub .doi{font-family:Inter,sans-serif;font-size:13.5px;font-weight:600;color:var(--royal);text-decoration:none;margin-left:14px}
+@media(max-width:640px){.pub h3{padding-right:0}.stamp{position:static;display:inline-block;margin-top:12px;transform:rotate(-2deg)}}
+
+/* ---------- BEYOND ---------- */
+#p-beyond .phero{background:linear-gradient(180deg,rgba(14,32,20,.82),rgba(23,20,42,.86)),url(images/beyond-06.jpg) center/cover;padding-bottom:clamp(80px,10vw,130px)}
+#p-beyond .phero .quote{color:#fff;font-size:clamp(30px,3.8vw,48px);max-width:980px;margin:0 auto}
+#p-beyond .phero .quote em{font-style:normal;color:#a9d18e}
+#p-beyond .phero .quote em.paws{color:#f7c96b}
+#p-beyond .phero .paw{font-size:34px;letter-spacing:12px;opacity:.85;margin-top:20px}
+.collage{columns:3 300px;column-gap:26px}
+.collage .photo{break-inside:avoid;margin:0 0 30px;display:block}
+.collage .photo:nth-child(3n+1){transform:rotate(-1.6deg)}
+.collage .photo:nth-child(3n+2){transform:rotate(1.4deg)}
+.collage .photo.in:nth-child(3n+1){transform:rotate(-1.6deg)}
+.collage .photo.in:nth-child(3n+2){transform:rotate(1.4deg)}
+.collage .photo.in:nth-child(3n){transform:none}
+
+
+/* ---- B: icon tiles on dark ---- */
+.objectives h2{color:#f6dcbc}
+.tiles{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
+.tile{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:26px 20px;color:#e9e5f5;transition:transform .3s,background .3s}
+.tile:hover{transform:translateY(-6px);background:rgba(255,255,255,.1)}
+.tile .ic{width:54px;height:54px;border-radius:14px;display:grid;place-items:center;background:var(--c);color:#fff;box-shadow:0 10px 24px -8px var(--c);margin-bottom:16px}
+.tile h3{font-family:Bitter,serif;font-weight:700;font-size:18px;color:#fff;margin-bottom:8px;line-height:1.3}
+.tile p{font-family:"Comic Neue",cursive;font-size:15.5px;line-height:1.55;color:#cfc9e4}
+@media(max-width:1100px){.tiles{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.tiles{grid-template-columns:1fr}}
+.ico{stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+/* ---- D: coloured-edge rows ---- */
+.erows{max-width:980px;margin:0 auto;display:grid;gap:14px}
+.erow{background:#fff;border-radius:14px;display:grid;grid-template-columns:86px 1fr;overflow:hidden;box-shadow:0 10px 28px -22px rgba(0,0,0,.5)}
+.erow .side{background:var(--c);color:#fff;display:grid;place-items:center}
+.erow .txt{padding:18px 24px}
+.erow h4{font-family:Bitter,serif;font-weight:700;font-size:19px;color:#2b2b2b;margin-bottom:4px}
+.erow p{font-family:"Comic Neue",cursive;font-size:16.5px;line-height:1.55;color:#555}
+/* ---- A: numbered cards ---- */
+.ncards{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;align-items:stretch}
+.ncard.wide{grid-column:1/-1}
+.ncard.wide ul{columns:3;column-gap:34px}
+.ncard.wide li{break-inside:avoid}
+.ncard.wide .nhead{display:flex;align-items:baseline;gap:16px;margin-bottom:6px}
+.ncard.wide .nhead h3{margin:0}
+.ncard{background:#fff;border-radius:16px;padding:28px 26px 24px;box-shadow:0 16px 40px -26px rgba(0,0,0,.45);border-top:5px solid var(--c)}
+.ncard .num{font-family:Lobster,cursive;font-size:44px;color:var(--c);line-height:1}
+.ncard h3{font-family:Bitter,serif;font-weight:700;font-size:20px;color:#2b2b2b;margin:10px 0 10px}
+.ncard ul{list-style:none;font-family:"Courier Prime","Courier New",monospace;font-size:14.5px;line-height:1.5;color:#4a4a4a}
+.ncard li{padding-left:18px;position:relative;margin:6px 0}
+.ncard li::before{content:"";position:absolute;left:0;top:.55em;width:7px;height:7px;border-radius:50%;background:var(--c)}
+@media(max-width:960px){.ncards{grid-template-columns:1fr}.ncard.wide ul{columns:2}}
+@media(max-width:620px){.ncard.wide ul{columns:1}}
+/* ---- C: connected path ---- */
+.path{position:relative}
+.path::before{content:"";position:absolute;left:50%;top:10px;bottom:10px;width:3px;transform:translateX(-50%);background:linear-gradient(#674EA7,#0B5394,#38761D,#783F04);border-radius:3px}
+.pstep{display:grid;grid-template-columns:1fr 90px 1fr;align-items:start;margin-bottom:26px}
+.pstep>.job,.pstep>.wbox{grid-row:1}
+.pstep:nth-child(odd)>:first-child{grid-column:1}.pstep:nth-child(odd)>.pdot{grid-column:2}
+.pstep:nth-child(even)>.pdot{grid-column:2}.pstep:nth-child(even)>:last-child{grid-column:3}
+@media(min-width:861px){.pstep+.pstep{margin-top:-80px}}
+.pdot{width:64px;height:64px;border-radius:50%;background:#fff;border:3px solid var(--c);color:var(--c);display:grid;place-items:center;font-family:Bitter,serif;font-weight:700;font-size:16px;justify-self:center;position:relative;z-index:1;margin-top:14px;box-shadow:0 6px 16px -8px rgba(0,0,0,.3)}
+.pdot.sm{width:56px;height:56px;font-size:15px;margin-top:10px}
+.job{border-left:0;border-top:5px solid var(--c)}
+.wbox{background:#fff;border-radius:14px;padding:20px 24px;border-left:4px solid var(--c);box-shadow:0 10px 28px -22px rgba(0,0,0,.45)}
+.wbox .wdate{font-family:"Amatic SC",cursive;font-weight:700;font-size:24px;color:var(--c);line-height:1.1}
+.wbox h4{font-family:Bitter,serif;font-weight:700;color:var(--blue);font-size:18.5px;line-height:1.35;margin:2px 0 6px}
+.wbox p{font-family:Lora,Georgia,serif;font-style:italic;font-size:15.5px;color:#333;line-height:1.6}
+@media(max-width:860px){.path::before{left:28px}.pstep{grid-template-columns:56px 1fr;gap:10px}.pstep>.pdot{grid-column:1!important;grid-row:1}.pstep>.job,.pstep>.wbox{grid-column:2!important}.pdot{width:52px;height:52px;font-size:14px}}
+/* hero chips */
+.chips{display:flex;gap:10px;justify-content:center;margin-top:18px;flex-wrap:wrap}
+.chips span{font-family:Caveat,cursive;font-size:22px;padding:4px 16px;border-radius:999px;background:#fff;box-shadow:0 6px 16px -10px rgba(0,0,0,.4)}
+.chips span:nth-child(1){color:#674EA7}.chips span:nth-child(2){color:#0B5394}.chips span:nth-child(3){color:#38761D}
+
+/* ---- W2: year rail ---- */
+.rail{position:relative;padding-left:170px;max-width:1040px;margin:0 auto}
+.rail::before{content:"";position:absolute;left:138px;top:10px;bottom:10px;width:2px;background:linear-gradient(#674EA7,#0B5394,#38761D,#783F04,#351C75)}
+.ritem{position:relative;margin-bottom:16px}
+.ritem .yr{position:absolute;left:-170px;top:18px;width:116px;text-align:right;font-family:Bitter,serif;font-weight:700;font-size:21px;line-height:1.1;color:var(--c)}
+.ritem .yr span{display:block;font-size:14px;font-weight:500;opacity:.8;margin-top:2px}
+.ritem::before{content:"";position:absolute;left:-39px;top:24px;width:14px;height:14px;border-radius:50%;background:#fff;border:3px solid var(--c);z-index:1}
+.rcard{background:#fff;border:1px solid #ece8f3;border-left:4px solid var(--c);border-radius:14px;box-shadow:0 10px 26px -22px rgba(0,0,0,.45);transition:box-shadow .3s}
+.rcard[open]{box-shadow:0 18px 40px -24px rgba(0,0,0,.45)}
+.rcard summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;padding:18px 22px}
+.rcard summary::-webkit-details-marker{display:none}
+.rcard h3{font-family:Lora,Georgia,serif;font-weight:700;font-size:19px;color:#333;line-height:1.3}
+.rcard .org{font-family:"Trebuchet MS",Inter,sans-serif;font-weight:700;font-style:italic;color:#6b6b6b;font-size:15.5px;margin-top:3px}
+.rcard .meta{font-family:Inter,sans-serif;font-size:13.5px;color:#666;margin-top:5px}
+.rcard .more{font-family:Caveat,cursive;font-size:23px;color:var(--c);white-space:nowrap}
+.rcard .more::before{content:"+ "}.rcard[open] .more::before{content:"– "}
+.rcard .tasks{padding:0 22px 20px;border-top:1px dashed #e4dff0;margin:0 22px;padding-left:0;padding-right:0}
+.rcard h5{font-family:Lora,Georgia,serif;font-weight:700;font-size:16.5px;color:#444;margin:14px 0 4px}
+.rcard ul{font-family:Lora,Georgia,serif;font-size:16px;color:#4c4c4c;padding-left:22px;line-height:1.6;margin-top:10px}
+.rcard h5+ul{margin-top:0}
+@media(max-width:700px){.rail{padding-left:0}.rail::before{display:none}.ritem::before{display:none}.ritem .yr{position:static;text-align:left;width:auto;margin-bottom:6px;display:flex;gap:6px;align-items:baseline}.ritem .yr span{display:inline}}
+/* ---- H1: home cards ---- */
+.hcard{background:#fff;border-radius:20px;padding:34px 36px;box-shadow:0 18px 44px -28px rgba(0,0,0,.45);position:relative;overflow:hidden}
+.hcard::before{content:"";position:absolute;left:0;top:0;right:0;height:6px;background:var(--c)}
+.hcard .badge{width:52px;height:52px;border-radius:14px;background:var(--c);color:#fff;display:grid;place-items:center;margin-bottom:16px}
+.hcard .hand{color:var(--c);font-size:clamp(23px,2.1vw,27px);line-height:1.42}
+
+/* ---- H2: open quotes ---- */
+.oq{display:grid;grid-template-columns:1fr 1px 1fr;gap:clamp(30px,4vw,56px);align-items:start}
+.oqrule{background:linear-gradient(transparent,#d9d2ea,transparent);align-self:stretch}
+.oq .qm{font-family:Lobster,cursive;font-size:96px;line-height:.6;height:42px;color:var(--c);opacity:.35}
+@media(max-width:860px){.oq{grid-template-columns:1fr}.oqrule{height:1px;background:linear-gradient(90deg,transparent,#d9d2ea,transparent)}}
+/* footer */
+footer{padding:60px 0 40px;text-align:center;font-family:Inter,sans-serif;font-size:14px;color:#9a96ad;background:var(--night)}
+footer .brand{color:#fff;font-size:34px;display:inline-block;margin-bottom:8px}
+footer .links-f{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 18px;margin:18px 0}
+footer .links-f a{text-decoration:none;color:#cfcbe0}
+footer .links-f a:hover{color:#f7c96b}
+
+/* lightbox */
+#lb{position:fixed;inset:0;background:rgba(10,8,20,.92);display:none;align-items:center;justify-content:center;z-index:200;padding:30px;cursor:zoom-out}
+#lb.on{display:flex;animation:pagein .25s}
+#lb img{max-width:100%;max-height:100%;border-radius:6px;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<header class="nav" id="nav">
+ <a class="brand" href="#home">Nermin Yusuf<b>.</b></a>
+ <button class="burger" id="burger" aria-expanded="false" aria-controls="links">Menu</button>
+ <nav class="links" id="links" aria-label="Main">
+  <a href="#home">Home</a><a href="#initiatives">Initiatives</a><a href="#research">Research</a><a href="#workshops">Workshops &amp; Presentations</a><a href="#trajectory">Academic Trajectory</a><a href="#publications">Publications</a><a href="#beyond">Beyond Academia</a>
+ </nav>
+</header>
+
+<main>
+<!-- ======================= HOME ======================= -->
+<div class="page" id="p-home" data-nav="light">
+ <section class="hero">
+  <div class="wrap split">
+   <div>
+    <span class="hi rv">Hi <span class="wave">:)</span></span>
+    <h1 class="words" data-words>I'm Nermin Yusuf</h1>
+    <ul class="roles">
+     <li class="rv d2">Researcher in Psycholinguistics &amp; Neuroeducation</li>
+     <li class="rv d3">Lecturer of English for Academic purpose and Scientific Methods.</li>
+     <li class="rv d4 founder">Founder of <scholara-logo class="inline-logo" aria-label="Scholara"></scholara-logo></li>
+    </ul>
+   </div>
+   <div class="hero-photo">
+    <figure class="photo rv zoom d1"><img class="zoomable" src="images/portrait-berlin.jpg" width="726" height="864" alt="Nermin Yusuf in front of the Brandenburg Gate, Berlin"></figure>
+    <div class="chips rv d4"><span>psycholinguistics</span><span>neuroeducation</span><span>cognition</span></div>
+   </div>
+  </div>
+  <div class="scrollcue">scroll ↓</div>
+ </section>
+
+ <section class="band dark home-quote">
+  <div class="narrow">
+   <span class="qmark rv">“</span>
+   <p class="quote rv d1">"Language is more than just words—it is a cognitive bridge that connects minds together."</p>
+   <p class="hand rv d2">With over 18 years of experience as a researcher and lecturer, I have dedicated my career to exploring the intersection of linguistics, neuroeducation, and cognition. From decoding the pragmalinguistic errors of language learners to developing groundbreaking neuroeducational models for late learners, my journey is driven by a deep curiosity about how the human brain acquires and processes communication.</p>
+  </div>
+ </section>
+
+ <section class="band mist">
+  <div class="wrap lake">
+   <figure class="photo clean rv zoom"><img class="zoomable" src="images/banner-lake.jpg" width="1280" height="351" alt="Nermin by a lake"></figure>
+  </div>
+  <div class="wrap split" style="margin-top:clamp(50px,7vw,90px);align-items:stretch">
+   <div class="hcard rv l" style="--c:#0B5394"><div class="badge"><svg class="ico" viewBox="0 0 24 24" style="width:26px;height:26px"><path d="M9 3a5 5 0 00-5 5c0 2 1 3 2 4v3h6v-3c1-1 2-2 2-4a5 5 0 00-5-5z"/><path d="M8 21h4M15 8h5M15 12h4"/></svg></div><p class="hand">My research trajectory is fundamentally rooted in language comprehension, and directed toward unraveling the brain's mechanisms that underpin language comprehension and leveraging this mechanistic understanding to inform therapeutic and educational practices, and improve language processing and learning across neurodiverse populations.</p></div>
+   <div class="hcard rv r d1" style="--c:#38761D"><div class="badge"><svg class="ico" viewBox="0 0 24 24" style="width:26px;height:26px"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></svg></div><p class="hand">Founder of Scholara, university lecturer, researcher, and trainer with over 15 years of experience in higher education. Experienced in research methodology, academic writing, scientific methods, and presentation skills, with a strong focus on AI-powered research strategies and tech-enabled learning. Passionate about cognitive approaches to learning, researcher development, and transforming research and education through innovation, technology, and evidence-based practice.</p></div>
+  </div>
+ </section>
+
+ <section class="band dark touch">
+  <div class="narrow">
+   <h2 class="rv">Get in touch at</h2>
+   <a class="mail rv d1" href="mailto:nermin.hosny@guc.edu.eg">nermin.hosny@guc.edu.eg</a>
+  </div>
+ </section>
+</div>
+
+<!-- ======================= INITIATIVES ======================= -->
+<div class="page" id="p-initiatives" data-nav="light">
+ <section class="init-top" id="init-net">
+  <div class="wrap init-logo"><scholara-logo bg-target="#init-net" aria-label="Scholara"></scholara-logo></div>
+ </section>
+
+ <section class="band dark vision" style="text-align:center">
+  <div class="wrap">
+   <h2 class="rv">The Vision &amp; Significance</h2>
+   <div class="story rv d1">
+    <p>The modern postgraduate journey—whether pursuing a Master’s, an MBA, or a PhD—presents unprecedented cognitive and organizational demands. In an era of information explosion, researchers frequently experience severe bottlenecks when navigating massive volumes of literature, synthesizing complex data, and maintaining rigorous academic integrity.</p>
+    <p>Traditional approaches often leave scholars relying on general-purpose LLM tools that lack the specialization, analytical depth, and precision required for serious research.</p>
+   </div>
+  </div>
+ </section>
+
+ <section class="band light academy">
+  <div class="wrap split wide-r">
+   <div class="logo-card rv l"><scholara-logo static aria-label="Scholara logo"></scholara-logo><p>a training series by Dr. Nermin Yusuf</p></div>
+   <div class="rv r d1">
+    <h2>Scholara</h2>
+    <p class="story">was engineered to solve this exact problem. Rather than treating artificial intelligence as a shortcut, the series introduces a scaffolded, integrated ecosystem of research-grade AI systems. It provides a comprehensive, end-to-end framework that guides scholars through every critical milestone of their academic lifecycle.</p>
+   </div>
+  </div>
+ </section>
+
+ <section class="band dark objectives">
+  <div class="wrap">
+   <h2 class="rv">Objectives</h2>
+   <div class="tiles">
+    <div class="tile rv d0"><div class="ic" style="--c:#d39a1c"><svg class="ico" viewBox="0 0 24 24" style="width:26px;height:26px"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></div><h3>Advanced Information Discovery</h3><p>Shifting from information overwhelm to an automated system for identifying high-potential topics and synthesizing peer-reviewed literature to map complex research landscapes.</p></div>
+    <div class="tile rv d1"><div class="ic" style="--c:#e0457b"><svg class="ico" viewBox="0 0 24 24" style="width:26px;height:26px"><path d="M4 20l4-1 11-11-3-3L5 16z"/><path d="M14 6l3 3"/></svg></div><h3>Ethical Writing &amp; Knowledge Management</h3><p>Bridging the gap between research and writing through advanced information extraction and transforming initial ideas into structured, ethically grounded drafts.</p></div>
+    <div class="tile rv d2"><div class="ic" style="--c:#3c9a2a"><svg class="ico" viewBox="0 0 24 24" style="width:26px;height:26px"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div><h3>Data Collection &amp; Analysis</h3><p>Streamlining the data journey by leveraging AI to create collection tools, performing statistical and qualitative analysis, and visualizing key findings for actionable insights.</p></div>
+    <div class="tile rv d3"><div class="ic" style="--c:#7b5cff"><svg class="ico" viewBox="0 0 24 24" style="width:26px;height:26px"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0014 0M12 18v3"/></svg></div><h3>High-Impact Communication</h3><p>Transforming complex research into compelling narratives and using AI simulations to optimize delivery for thesis defenses and international conferences.</p></div>
+    <div class="tile rv d0"><div class="ic" style="--c:#2f7fd6"><svg class="ico" viewBox="0 0 24 24" style="width:26px;height:26px"><path d="M4 5a2 2 0 012-2h12v16H6a2 2 0 00-2 2z"/><path d="M4 19V5M9 8h6"/></svg></div><h3>Strategic Research Publishing</h3><p>Navigating high-impact publishing by treating research as a "product," identifying suitable journals, and refining manuscript structure for academic tone and clarity.</p></div>
+   </div>
+   <p style="text-align:center;margin-top:56px" class="rv"><a class="btn" href="https://scholara-series.vercel.app/" target="_blank" rel="noopener">Visit Website →</a></p>
+  </div>
+ </section>
+</div>
+
+<!-- ======================= RESEARCH ======================= -->
+<div class="page" id="p-research">
+ <section class="phero">
+  <div class="wrap">
+   <h1 class="words" data-words>Research Innovations</h1>
+   <p class="quote pacifico rv d2">"Language is more than just a code of words—it is a social landscape. My research aims to map the spaces between those words, building bridges of understanding for every type of brain."</p>
+  </div>
+ </section>
+
+ <section class="ribbon light-r"><h2 class="rv">The LIRRA Blueprint: Rewiring the Language Circuit</h2></section>
+
+ <section class="band light">
+  <div class="wrap split">
+   <div class="rv l">
+    <p class="story">They often say that if you don't learn a second language as a child, you’ll never truly "own" it. I consistently observed adult learners struggle, trapped in a cycle of translating word-for-word and transferring their mother tongue constructions, never quite reaching that target-like effortless flow. My obsession became simple:</p>
+    <p class="hotwire">How do we "hotwire" the adult brain to acquire language as naturally as a child does?</p>
+   </div>
+   <figure class="photo rv r d1"><img class="zoomable" src="images/research-ai.jpg" width="575" height="399" alt="Illustration of the brain and language technology"></figure>
+  </div>
+  <div class="narrow" style="margin-top:50px">
+   <p class="story rv">This curiosity led to an inter-disciplinary investigation -encompassing neurocognition, psycholinguistics, corpus linguistics, and language acquisition- giving rise to the birth of the <span class="draw">LIRRA Model</span>—a neuroeducational revolution designed specifically for the "late learner". Instead of traditional, dry grammar drills, I dug into the architecture of the mind. I identified five key brain-adaptable features rooted in neuroscience to create a framework that speaks the brain’s native language. LIRRA isn't just a model; it’s a bridge to procedural memory—the place where habits are formed and where language finally becomes automatic.</p>
+  </div>
+ </section>
+
+ <section class="band tight mist">
+  <div class="wrap"><p class="callout rv zoom">I transformed the model into a high-energy, computerized program -The LIRRA-NP- featuring interactive gamified material, and implicit exposure designed to stimulate the brain’s reward systems.</p></div>
+ </section>
+
+ <section class="band light result">
+  <div class="wrap split wide-r">
+   <figure class="photo rv l"><img class="zoomable" src="images/lirra-results.jpg" width="687" height="556" alt="LIRRA results: speed-up and massive gains"></figure>
+   <div class="rv r d1">
+    <h3>The result?</h3>
+    <div class="story"><p>A complete transformation in how students performed. I witnessed a more automatic performance, significant "speed-up" in production and massive gains in reading proficiency.</p>
+    <p>My students weren't just "studying" English anymore—they were processing it with enjoyment. LIRRA proved that the adult brain isn't "too old" to learn; it just needs a different set of keys to unlock its potential.</p></div>
+    <div class="sticky g rv pop d3" style="--r:-3deg;max-width:300px;margin-top:26px">The adult brain isn't "too old" to learn!</div>
+   </div>
+  </div>
+ </section>
+
+ <section class="ribbon"><h2 class="rv">Beyond the Literal: Building a World for Every Mind</h2></section>
+
+ <section class="band dark neuro">
+  <div class="wrap split">
+   <figure class="photo rv l"><img class="zoomable" src="images/lirra-model.jpg" width="1024" height="871" alt="Illustration of neurodiversity"></figure>
+   <div class="story rv r d1">
+    <p class="lead">I have always been fascinated by what happens <i>between the lines of a conversation</i>. While my early career was spent decoding the foundations of language. My recent journey has taken me into its mechanics, diving into <span class="tag">Neurodiversity</span>.</p>
+    <p>For many autistic individuals, Navigating a conversation becomes a minefield of pragmatic hurdles, where the literal meaning of a word is clear, but the overarching social landscape—filled with the complex "mind-reading" required to decode language—feels like a puzzle with missing pieces. My research collaborations are dedicated to mapping this landscape and building bridges of understanding.</p>
+   </div>
+  </div>
+ </section>
+
+ <section class="ribbon light-r"><h2 class="rv">Walking the Spectrum: A VR Journey into Alterity</h2></section>
+
+ <section class="band light vr">
+  <div class="wrap split">
+   <div class="story rv l"><p>In a powerful partnership with East Stroudsburg University of Pennsylvania, I am working on a project called <i>"From Empathy to Alterity"</i>. We are leveraging Virtual Reality (VR) to give non-autistic people a glimpse into the daily cognitive and inferential challenges faced by those on the spectrum. It’s about more than just data; it’s about fostering true inclusion by allowing people to "walk a mile" in a different cognitive world.</p></div>
+   <figure class="photo rv r d1"><img class="zoomable" src="images/vr-project.jpg" width="737" height="525" alt="VR project"></figure>
+  </div>
+ </section>
+
+ <section class="ribbon light-r"><h2 class="rv">Where the Eyes Linger: Uncovering the Hidden Hurdles</h2></section>
+
+ <section class="band light eye">
+  <div class="wrap split wide-r">
+   <figure class="photo rv l"><img class="zoomable" src="images/eye-tracking.jpg" width="1024" height="676" alt="Eye-tracking research"></figure>
+   <div class="rv r d1">
+    <div class="story">
+     <p>Meanwhile, through collaborations with The University of Bristol, we are using eye-tracking technology to peek into the real-time processing of language, focusing on how autistic adults read between the lines.</p>
+     <p>Rather than asking <i>whether</i> autistic adults read differently, we ask <i>when</i> and <i>how</i> differences emerge. Participants read short passages in which a simple phrase such as <i>"I understand"</i> can be a plain acknowledgement or a quiet sign of disappointment. By watching how the eyes move, pause and look back across the text, we can trace the time-course of inference processing. This shows the exact stage of comprehension where meaning breaks down, and how Theory of Mind, working memory, inhibitory control and central coherence shape it.</p>
+     <p>The goal is to turn these insights into evidence-based interventions, inclusive teaching and fairer assessment, so that every reader has equal access to learning.</p>
+    </div>
+    <div class="sticky v pin rv pop d3" style="--r:2.5deg;max-width:280px;margin-top:28px">time-course inference processing</div>
+   </div>
+  </div>
+ </section>
+</div>
+
+<!-- ======================= WORKSHOPS ======================= -->
+<div class="page" id="p-workshops">
+ <section class="phero">
+  <div class="wrap">
+   <h1 class="words" data-words>Workshops and Presentations</h1>
+   <p class="quote rv d2">"I don't just deliver information; I design experiences"</p>
+  </div>
+ </section>
+
+ <section class="ribbon light-r"><h2 class="rv" style="color:var(--indigo)">Igniting Minds through the Art of Presentation</h2></section>
+
+ <section class="band light">
+  <div class="wrap split">
+   <p class="story rv l" style="color:var(--blue);text-align:justify"><i>I’ve always believed that a presentation shouldn't just be heard—it should be felt.</i> To me, the podium isn't just a place to stand; it’s a platform for transformation. With over 18 years of experience in the spotlight, I’ve refined the art of turning complex linguistic and cognitive theories into high-energy, actionable insights that resonate with diverse audiences.</p>
+   <div class="video rv r d1" data-yt="AMrSFVIl-tA"></div>
+  </div>
+  <div class="wrap split" style="margin-top:clamp(50px,7vw,90px)">
+   <div class="video zoomv rv l" data-yt="eWFO67ZTEWQ"></div>
+   <p class="story rv r d1" style="text-align:justify">As the coordinator of the Communication and Presentation Course at the German University in Cairo, I don't just teach the "rules" of public speaking. I ignite a passion for innovation . I empower students and faculty to move beyond static slides and embrace a tech-forward approach. Whether it’s unfolding complex ideas, leveraging AI or using interactive platforms, my mission is to ensure that every message is <span class="draw">visually stunning, intellectually rigorous, and impossible to forget.</span></p>
+  </div>
+ </section>
+
+ <section class="band dark berlin">
+  <div class="wrap">
+   <h2 class="rv" style="font-family:Oswald,sans-serif;font-weight:500;text-align:center;font-size:clamp(28px,3.6vw,42px);margin-bottom:34px">The Berlin Chapter: Innovation on the Global Stage</h2>
+   <figure class="photo clean rv zoom"><img class="zoomable" src="images/berlin-stage.jpg" width="1280" height="536" alt="Presenting in Berlin"></figure>
+   <p class="story rv">The pinnacle of my presentation journey took place in the heart of Europe. I was granted the <b>AI-Connects Award</b> to represent my department at the German International University, Germany where I had the incredible opportunity to plan for and conduct a workshop that would redefine the academic workflow for students and researchers.</p>
+  </div>
+ </section>
+
+ <section class="band light berlin-ws">
+  <div class="wrap split wide-l">
+   <div class="rv l">
+    <h3>"AI-Powered Study &amp; Research Strategies"</h3>
+    <p class="story">This wasn't just a workshop; it was a blueprint for the modern learner or researcher. In an era where AI is often misunderstood, I stood before a room of bright university minds to show them how to harness these tools ethically and effectively.</p>
+   </div>
+   <figure class="photo rv r d1" style="max-width:380px;justify-self:center"><img class="zoomable" src="images/berlin-poster.jpg" width="1054" height="1400" alt="Workshop poster, Berlin"></figure>
+  </div>
+ </section>
+
+ <section class="band mist achieved">
+  <div class="wrap">
+   <h3 class="rv">What was achieved in Berlin?</h3>
+   <div class="erows">
+    <div class="erow rv l"><div class="side" style="--c:#7b5cff"><svg class="ico" viewBox="0 0 24 24" style="width:32px;height:32px"><path d="M4 6h10M4 12h16M4 18h7"/><path d="M17 3l3 3-3 3"/></svg></div><div class="txt"><h4>Revolutionizing the Workflow</h4><p>Moving from passive note-taking to AI-assisted material organization, turning hours of lecture videos into searchable, structured study guides.</p></div></div>
+    <div class="erow rv r"><div class="side" style="--c:#b8861b"><svg class="ico" viewBox="0 0 24 24" style="width:32px;height:32px"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></div><div class="txt"><h4>The Art of the Literature Review</h4><p>Guiding participants on AI-driven information extraction and AI use literature search and review.</p></div></div>
+    <div class="erow rv l"><div class="side" style="--c:#0B5394"><svg class="ico" viewBox="0 0 24 24" style="width:32px;height:32px"><path d="M4 19V5M9 19V5M14 19l4-14 3 1-4 14z"/><path d="M3 19h18"/></svg></div><div class="txt"><h4>The Architect of Knowledge Management</h4><p>Evolving from passive reading to active engagement with academic libraries; developing the ability to curate personal knowledge bases, turning expansive research archives into interactive summaries and audio-visual notes, and facilitating a deeper conversation with the literature.</p></div></div>
+    <div class="erow rv r"><div class="side" style="--c:#38761D"><svg class="ico" viewBox="0 0 24 24" style="width:32px;height:32px"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div><div class="txt"><h4>Research Reimagined</h4><p>Designing AI-assisted reports to draw meaningful insights from data.</p></div></div>
+    <div class="erow rv l"><div class="side" style="--c:#741B47"><svg class="ico" viewBox="0 0 24 24" style="width:32px;height:32px"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></div><div class="txt"><h4>Visualizing the Future</h4><p>Designing the perfect visual—from infographics to mind maps, slides and videos—to ensure their data tells a story that sticks.</p></div></div>
+   </div>
+  </div>
+ </section>
+
+ <section class="band light">
+  <div class="wrap split wide-l">
+   <p class="story rv l" style="color:var(--blue)">The journey to Berlin was more than an international recognition of excellence; it was a catalyst for redefining what is possible in the modern classroom. Seeing students from different backgrounds gain the confidence to integrate AI into their academic lives was a powerful reminder of why I do what I do. <span class="draw">Berlin wasn't just a destination—it was the beginning of an ongoing revolution in how we teach, lead, and discover.</span></p>
+   <figure class="photo rv r d1"><img class="zoomable" src="images/berlin-group.jpg" width="1280" height="931" alt="Group photo, Berlin workshop"></figure>
+  </div>
+ </section>
+
+ <section class="ribbon"><h2 class="rv">List of Workshops &amp; Presentations</h2></section>
+ <section class="band mist">
+  <div class="wrap path" id="wlist"></div>
+  <p style="text-align:center;margin-top:50px" class="rv"><a class="btn dark-b" href="mailto:nermin.hosny@guc.edu.eg">Interested? Get in touch.</a></p>
+ </section>
+</div>
+
+<!-- ======================= TRAJECTORY ======================= -->
+<div class="page" id="p-trajectory" data-nav="light">
+ <section class="top band">
+  <div class="wrap split wide-r">
+   <figure class="photo rv l" style="max-width:400px;justify-self:center"><img class="zoomable" src="images/guc.jpg" width="479" height="842" alt="Nermin Yusuf at the German University in Cairo"></figure>
+   <div>
+    <h1 class="words" data-words>Architecting Learning &amp; Leading</h1>
+    <p class="hand rv d2">I believe that education should be as dynamic as the world around us. With a decade and a half of experience in second language acquisition and university-level coordination, my career has been a journey of bridging the gap between traditional instruction and the digital frontier. I have evolved from a lecturer into an architect of modern learning, transforming my classroom into a space where tech-enabled tools turn passive instruction into active discovery. From the German University in Cairo to our branch in Berlin, I have championed the "future-proof" classroom—pioneering paperless, digitized environments and replacing static assignments with immersive, gamified experiences.</p>
+   </div>
+  </div>
+ </section>
+
+ <section class="band dark compass">
+  <div class="wrap">
+   <h2 class="rv">The Mentor’s Compass: Navigating Years of Academic Leadership</h2>
+   <p class="quote rv d1">As a Subject Coordinator, I don’t just manage curricula; I build collaborative ecosystems. My leadership is driven by a vision of clarity and growth, ensuring that faculty members have the tools to excel and students have the skills to lead, fostering a culture of tech-enabled, student-centered excellence.</p>
+  </div>
+ </section>
+
+ <section class="band light orchestra">
+  <div class="wrap oq">
+   <div class="oqi rv l" style="--c:#073763"><div class="qm">“</div><p class="hand c1">For years, the role of Subject Coordinator has been defined by the art of orchestration—moving beyond simple management to build a thriving, high-performance educational ecosystem. This mission involves serving as the strategic architect for five cornerstone disciplines: <b style="color:#4C1130">Academic Study Skills, Scientific Methods, Communication, Presentation Skills, and Research Paper Writing.</b> Leadership here is a continuous cycle of innovation, from piloting visionary programs and validating rigorous rubrics to conducting the high-level strategic planning that keeps curricula at the cutting edge of modern pedagogy.</p></div>
+   <div class="oqrule"></div>
+   <div class="oqi rv r d1" style="--c:#38761D"><div class="qm">“</div><p class="hand c2">Yet, the true heartbeat of this work lies in mentorship. By cultivating a collaborative community through weekly dialogues and immersive triannual workshops, the focus remains on empowering the next generation of educators. Through a blend of personalized coaching, inter-rater reliability checks, and classroom visits, <b style="color:#274E13">the result is more than just quality assurance—it is the creation of a unified, motivated, and intellectually rigorous teaching force where every instructor is equipped to lead and every student is inspired to grow.</b></p></div>
+  </div>
+ </section>
+
+ <section class="band mist">
+  <div class="wrap">
+   <h2 class="sec-h rv">Work Experience</h2>
+   <div class="rail" id="jobs"></div>
+  </div>
+ </section>
+
+ <section class="band light">
+  <div class="wrap">
+   <h2 class="sec-h rv">Achievements</h2>
+   <ul class="achv" id="achv"></ul>
+  </div>
+ </section>
+
+ <section class="band cream skills">
+  <div class="wrap">
+   <h2 class="sec-h rv">Skills</h2>
+   <div class="ncards" id="skills"></div>
+  </div>
+ </section>
+</div>
+
+<!-- ======================= PUBLICATIONS ======================= -->
+<div class="page" id="p-publications">
+ <section class="phero">
+  <div class="wrap split">
+   <figure class="photo rv l"><img class="zoomable" src="images/portrait-formal.jpg" width="742" height="990" alt="Dr. Nermin Yusuf"></figure>
+   <div>
+    <h1 class="words" data-words>Publications</h1>
+    <p class="quote rv d2">"Language is the forest; Neuroscience and Psychology are the blueprints; data is the light that reveals the hidden architecture"</p>
+   </div>
+  </div>
+ </section>
+ <section class="band mist">
+  <div class="narrow pubs" id="pubs"></div>
+ </section>
+</div>
+
+<!-- ======================= BEYOND ======================= -->
+<div class="page" id="p-beyond">
+ <section class="phero">
+  <div class="wrap">
+   <p class="quote rv">Beyond Academia, my compass points to <em>the woods</em>, and my heart stays with those who can not advocate for themselves: our <em class="paws">furry four-legged</em> friends, the loyalty that never ends.</p>
+   <div class="paw rv d2">🐾 🌲 🐾</div>
+  </div>
+ </section>
+ <section class="band cream">
+  <div class="wrap collage" id="collage"></div>
+ </section>
+</div>
+</main>
+
+<footer>
+ <a class="brand" href="#home">Nermin Yusuf<b style="color:#f2a516">.</b></a>
+ <div class="links-f"><a href="#home">Home</a><a href="#initiatives">Initiatives</a><a href="#research">Research</a><a href="#workshops">Workshops &amp; Presentations</a><a href="#trajectory">Academic Trajectory</a><a href="#publications">Publications</a><a href="#beyond">Beyond Academia</a></div>
+ <div>Get in touch at <a href="mailto:nermin.hosny@guc.edu.eg" style="color:#f7c96b">nermin.hosny@guc.edu.eg</a></div>
+ <div style="margin-top:10px">© <span id="yr"></span> Dr. Nermin Yusuf</div>
+</footer>
+<div id="lb" role="dialog" aria-label="Photo"><img alt=""></div>
+
+<script>
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+/* ---------- workshops list ---------- */
+const WS=[
+["Sep 2025","AI-driven article finding and knowledge management for research purposes","Workshop conducted at the teacher professional workshop at The German University in Cairo (GUC). The purpose of this Workshop was to equip young researchers with up-to-date knowledge of AI integration for research purposes in that a researcher could master time-efficient methods for reliable source finding and information extraction."],
+["Sep 2025","In-class Interactive and gamified activities","Presented at the teacher professional workshop at The German University in Cairo (GUC). This presentation provided teachers with practical steps to use interactive and gamified activities in class to engage students in the learning experience."],
+["July 2025","AI-powered study and research strategies in action: Revolutionize your Study Methods and Primary Research Skills","Workshop conducted at the German International University (GIU) Berlin. This workshop equipped students with cutting-edge knowledge of AI tools to facilitate their study and research strategies in reliable article finding and review, literature review, writing, and collaboration."],
+["Feb 2025","A practical guide for AI integration in literature review writing","Presented at the teacher professional workshop at The German University in Cairo (GUC). This presentation introduced a practical guide for using AI tools in relevant research finding, gap identification, and literature review writing to equip novice researchers with practical AI techniques to facilitate research journey."],
+["Feb 2024","A practical guide for AI integration in presentation preparation","Presented at the teacher professional workshop at The German University in Cairo (GUC). This presentation introduced a practical guide for using AI tools and incorporating a handful of accumulative techniques in order to feasibly prepare for and develop presentations for both the teachers and the students."],
+["Feb 2023","Using AI tools for presentation skills","Presented at the teacher professional workshop at The German University in Cairo (GUC). This presentation introduced a variety of AI tools that could be used for presentation preparations. This presentation outlined the pros and cons of the tools used in presentations highlighting efficient prompt drafting for optimum results."],
+["Feb 2022","Neuroeducation: A new perspective in teaching","Presented at the teacher professional workshop at The German University in Cairo (GUC). This presentation highlighted the concept of neuroeducation listing the various features that can be adapted in teaching for integrating neuroeducation in the classroom."],
+["Feb 2021","Gamifying education: Significance of gamification in learning and suggested gaming platforms","Presented at the teacher professional workshop at The German University in Cairo (GUC). This presentation shed light on the significance of gamification in learning. Further, this presentation equipped the teachers with the different gaming platforms that can be feasibly used without coding to gamify the classroom exercises."],
+["Feb 2019","An introduction to academic word/phrase checker","Presented at the teacher professional workshop at The German University in Cairo (GUC). This presentation introduced the Academic Word/Phrase Checker platform and provided the teachers with an orientation for using this platform in order to verify the students’ academic writings."],
+["Feb 2020","L1 influence on L2 lexical phrase production: Issues and proposed solutions","Presented at the teacher professional workshop at The German University in Cairo (GUC). This presentation aimed at drawing the attention of teachers to the influence L1 may have on L2 phrases production in students’ writings. The presentation highlighted the types of errors made by students and proposed solutions via correction feedback."],
+["Sep 2018","Lexical phrases: An essential language requisite for producing target-like forms","Presented at the teacher professional workshop at The German University in Cairo (GUC). This presentation highlighted the importance of learning L2 lexical phrases as opposed to learning individual vocabulary in order to perform target-like language. The presentation also highlighted potential language issues arising from students depending on word for word sentence constructions. Further, implications were introduced."],
+["Feb 2018","Motivation: The impetus for learning via brain activation","Presented at the teacher professional workshop at The German University in Cairo (GUC). This presentation aimed at highlighting the significance of motivation in learning. The presentation introduced the role motivation plays in learning, the brain changes accompanying motivation, and the power of a motivating learning environment and a motivating feedback for students."],
+["Sep 2017","The importance of collocations in second language learning","Presented at the teacher professional workshop at The German University in Cairo (GUC). This presentation introduced the importance of teaching collocations to be used in the writings of students for a target-like performance."],
+["Feb 2017","An introduction to Corpus Linguistics","Presented at the teacher professional workshop at The German University in Cairo (GUC). This presentation introduced the different corpora with a particular focus on the British corpus. This presentation oriented the teachers about using the British corpus to check for language issues as well as to orient the students about using the British corpus for a better performance in their writing assignments."]];
+const WC=['#0B5394','#674EA7','#741B47','#38761D','#b8861b','#1C4587','#783F04'];
+document.getElementById('wlist').innerHTML=WS.map((w,i)=>{const c=WC[i%WC.length];const box=`<div class="wbox rv ${i%2?'r':'l'}" style="--c:${c}"><div class="wdate">${esc(w[0])}</div><h4>${esc(w[1])}</h4><p>${esc(w[2])}</p></div>`;const dot=`<div class="pdot sm rv zoom" style="--c:${c}">${esc(w[0].slice(-4))}</div>`;return `<div class="pstep">${i%2?dot+box:box+dot}</div>`}).join('');
+
+/* ---------- jobs ---------- */
+const JOBS=[
+{t:"Founder & Lead Instructor",o:"Scholara",w:"2026 – Current",m:"",k:"Self-employment",c:"#e0457b",g:[["",["Conceptualized and launched a four-module training curriculum guiding postgraduate students (Master's, PhD, MBA) through the academic lifecycle.","Designed educational frameworks moving researchers from general LLM usage to research-grade AI ecosystems.","Developed hands-on modules covering specialized data discovery, ethical writing, thesis defense simulation, and publishing strategies.","Delivered interactive training in both English and Arabic, tailored to intensive research and data demands.","Directed frameworks focused on automated citation workflows, knowledge management, and academic integrity."]]]},
+{t:"Lecturer and subject coordinator in Academic and Scientific English",o:"The German University in Cairo (GUC)",w:"2012 – Current",o2:"The German International University in Berlin (GIU)",m:"<b>City:</b> Cairo &amp; Berlin | <b>Country:</b> Egypt &amp; Germany",k:"Full-time",c:"#674EA7",
+ g:[["Subject Coordination tasks:",["Coordinating the Academic Study Skills, Scientific Methods, Communication, Presentation Skills, and Research Paper Writing courses.","Contributing to the course materials.","Developing curriculum and semester outlines.","Managing the timeline and requirement of the academic program.","Piloting new educational programs and approaches.","Developing assessment measures and validating rubrics","Performing regular inter-rater reliability measures.","Employing quality assurance measures of instructors’ performance and monitoring their tasks and corrections.","Conducting tri-annual workshops to orient the teachers with the semester’s plans and deliver professional development presentations.","Holding weekly mentoring meetings to monitor the teachers’ performance and address queries.","Drafting reports on the course’s deliverables and staff performance.","Training and mentoring junior instructors and providing academic assistance to all staff members."]],
+ ["Lecturer tasks:",["Teaching research paper writing.","Teaching survey and report writing.","Teaching problem solving, critical thinking and inferential skills.","Teaching presentation skills.","Teaching Academic writing, reading and listening skills.","Editing and correcting students’ literature reviews and writing assignments."]],
+ ["Administrative tasks:",["Reviewing, editing & proofreading University’s documents.","Reviewing colleagues’ proposals and theses in accordance with the scientific and research methods as part of Professional Learning Community (PLC).","Reviewing students’ assignments and baby theses.","Writing/proofreading students’ scholarship application statements.","Writing letters of recommendations for students."]]]},
+{t:"Visiting Lecturer",o:"The Arab Open University",w:"2019 – 2022",m:"<b>City:</b> Cairo | <b>Country:</b> Egypt",k:"Voluntary",c:"#0B5394",g:[["",["Delivering sessions on corpus-linguistics for Master’s students.","Delivering sessions on neuroeducation for Master’s students.","Delivering workshops for AI integration into teaching and research."]]]},
+{t:"Peer Reviewer",o:"Enago Publications",w:"2020 – 2022",m:"<b>City:</b> Cairo | <b>Country:</b> Egypt",k:"Freelance",c:"#38761D",g:[["",["Assessing and addressing the content of the manuscript.","Ensuring that the literature review is adequately written, up-to-date and the work cited are all relevant to work.","Ensuring a rigorous methodology and appropriate analysis.","Ensuring a comprehensive presentation of the results and discussion.","Providing written, constructive and informative critique of the submitted work.","Providing suggestions and recommendations based on the manuscript critique.","Ensuring the rigorous standards of the scientific process."]]]},
+{t:"English Instructor",o:"AmidEast",w:"2008 – 2012",m:"<b>City:</b> Cairo | <b>Country:</b> Egypt",k:"Part-time",c:"#783F04",g:[["",["Teaching TOEFL (iBT + pbT).","Teaching general English courses for intermediate and advanced levels.","Teaching business English for corporates.","Teaching conversation courses."]]]},
+{t:"English Instructor",o:"Ministry of Defense Language Institute",w:"2007 – 2008",m:"<b>City:</b> Cairo | <b>Country:</b> Egypt",k:"Part-time",c:"#741B47",g:[["",["Teaching English Language Courses for intermediate- and advanced-level students."]]]},
+{t:"CEO Assistant and Communication Specialist",o:"ERA - The IRES Group",w:"2005 – 2008",m:"<b>City:</b> Cairo | <b>Country:</b> Egypt",k:"Full-time",c:"#1C4587",g:[["",["Proofreading company’s documents and contracts.","Managing and preparing public speaking material for the company’s events.","Liaising between the company’s staff members, CEO, and stakeholders.","Translating contracts and other documents from English to Arabic and vice versa.","Using diversified skills of computer programs in coordination and designs."]]]},
+{t:"International Telemarketer",o:"Ameco Tech - (an American telecommunication company)",w:"2004 – 2005",m:"<b>City:</b> Cairo | <b>Country:</b> Egypt",k:"Full-time",c:"#7F6000",g:[["",["Marketing for phone line services to native customers of USA, UK, Canada, and Ireland","Dealing with customers' issues, handling their inquiries, and closing deals."]]]},
+{t:"News Editor/Translator",o:"Egypt State Information Service - Ministry of Information",w:"2003 – 2004",m:"<b>City:</b> Cairo | <b>Country:</b> Egypt",k:"Full-time",c:"#351C75",g:[["",["Translating News from international sources from English to Arabic and vice versa.","Reviewing and editing news for the publishing process.","Writing and editing media releases and briefings.","Managing media outreach plans as required.","Ensuring the readiness of media material and its adaptability to the public.","Monitor all feeds from news bureaus and other agencies for editing and further publication.","Manage and produce news to present information with accuracy and within time frame."]]]}];
+document.getElementById('jobs').innerHTML=JOBS.map((j,i)=>{const groups=j.g.map(g=>(g[0]?`<h5>${esc(g[0])}</h5>`:'')+`<ul>${g[1].map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`).join('');const [y1,y2]=j.w.split(' – ');return `<div class="ritem rv" style="--c:${j.c}"><div class="yr">${esc(y1)}<span>– ${esc(y2)}</span></div><details class="rcard"><summary><div><h3>${esc(j.t)}</h3><div class="org">${esc(j.o)}${j.o2?' · '+esc(j.o2):''}</div><div class="meta">${[j.m,`<i>${esc(j.k)}</i>`].filter(Boolean).join(' &nbsp;·&nbsp; ')}</div></div><span class="more">Tasks</span></summary><div class="tasks">${groups}</div></details></div>`}).join('');
+
+/* ---------- achievements ---------- */
+const ACH=["Developed the LIRRA-based neuroeducation program for enhancing and automatizing second language acquisition for intermediate-level adults.","Developed the LIRRA neuroeducational model for improving second language in late learners.","Collaborated on developing rubrics for various purposes of educational objectives in academic writing and presentation courses at the German University.","Transitioned traditional paper-and-pen university assignment formats to online platforms to offer greater flexibility and accessibility.","Implemented gamified approaches to exercises and activities, replacing conventional methods, to promote sustained engagement and participation.","Developed professional development workshops and training sessions for teachers to enhance their academic and professional performance.","Implemented the utilization of corpus linguistics into the academic writing course.","Integrated AI into academic courses at The German University in Cairo.","Developed a VR game -escape the Island- for facilitating the learning process of Presentation skills."];
+document.getElementById('achv').innerHTML=ACH.map((a,i)=>`<li class="rv d${i%3}">${esc(a)}</li>`).join('');
+
+/* ---------- skills (sticky notes) ---------- */
+const SK=[["Research Skills","y",-2,["Proficiency with online experiment builders such as Gorilla.sc","Knowledge with Python for data analysis (basic, pending)","Knowledge with eye-tracking","Experience with refining research questions and hypotheses","Experience with conducting and synthesizing literature reviews","Experience with research design and planning","Experience with instrument construction and validation","Experience with applying appropriate sampling methods","Experience with quantitative and qualitative data collection methods","Experience with quantitative and qualitative data analysis techniques","Proficiency with advanced scientific and academic writing skills"]],
+["Coordination and Leadership Skills","p",1.8,["Problem solving and critical thinking skills","Planning & Documentation management","Team-management skills","Timely communication and interpersonal skills","Mentoring skills"]],
+["Teaching Skills","g",-1.4,["Use of AI and technological advancements in teaching and language learning.","Lesson planning and teaching according to lesson stages.","Utility of a variety of teaching approaches to enhance the learning experience.","Appealing to multiple intelligences demands."]],
+["Soft Skills","b",2.2,["Knowledge with Python for data analysis","Experience with AI language and presentation assisted tools.","Experience with Microsoft Office Software [Word, PowerPoint and Excel]","Experience with Google online processing Software [Docs, Forms, Slides, Sheets, Classroom]","Experience with Online Language tools [Corpora, Concord Writer, Word_and_Phrase text analyzer, Netspeak, Academic Phrasebank, etc…]","Internet Expert, Searcher and User.","English / Arabic Typing Skills (60 w/m)."]],
+["Editing and Reviewing Skills","o",-1.8,["Strong reviewing skills [content review, content management]","Strong vocabulary, grammar, pragmatic skills [revising & proofreading]","Strong research skills [data analysis, report writing]","Strong writing skills [scientific, academic, technical]","Collaboration and communication [coordination, consulting, verbal & written communication]"]]];
+const SKO=[0,1,2,4,3];const SKC=['#674EA7','#741B47','#38761D','#b8861b','#0B5394'];
+document.getElementById('skills').innerHTML=SKO.map((k,i)=>{const sk=SK[k];const wide=(k===0||k===3);return `<div class="ncard rv d${i%3}${wide?' wide':''}" style="--c:${SKC[i]}"><div class="nhead"><div class="num">0${i+1}</div><h3>${esc(sk[0])}</h3></div><ul>${sk[3].map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>`}).join('');
+
+/* ---------- publications ---------- */
+const PUBS=[
+{t:"A Cognitive-Based Intervention for Enhancing Pragmatic and Inferential Reading Processing for HFASD Young Adults: A Study Proposal",u:"https://doi.org/10.21203/rs.3.rs-6012873/v1",s:"Submitted",a:"This two-phase study investigates a comprehensive skill set of pragmatic and inferential processing and underlying mechanisms in reading for young adults with HFASD, and develops a tailored cognitive intervention to address identified challenges. Phase one will explore these difficulties by collecting both offline and online data. Offline data will be gathered using a purposefully developed Pragmatic and Inferential Reading Assessment (PIRA), while online data will be collected via eye-tracking to examine real-time reading processes. Additionally, HFASD will complete assessments of Theory of Mind (ToM), Working Memory (WM), Central Coherence (CC), and Inhibitory Control (IC) to investigate the cognitive mechanisms underlying pragmatic and inferential reading comprehension; HFASD performance will be compared to another group of individuals with sub-autistic traits (IWS-AT) to offer insight into the relationship between symptom severity and the identified challenges. Based on the findings of phase one, phase two will involve the development and implementation of a cognitive-based language intervention incorporating computerized gamified activities. The intervention's effectiveness on pragmatic and inferential reading skills for HFASD compared to IWS-AT and controls will be evaluated to assess both within-group and between-group changes. It is speculated that the developed cognitive-based intervention will have the potential to enhance pragmatic and inferential reading processing, offering substantial benefits to educational and therapeutic practices."},
+{t:"Embracing Neurodiversity: Exploring Cognitive Inferential Skills Challenges in Communication for Undergraduates with Autism Spectrum Disorder",s:"In Preparation",a:"This research aims at exploring language processing and communicative inferential skills of autistic university students; it also aims at identifying potential communication gaps in order to promote better communication between autistic and non-autistic individuals, thus helping build stronger connections, bridge the classroom gap, and promote inclusivity."},
+{t:"The Effect of a Neuroeducation Program on L2 Automaticity and Acquisition for Intermediate Learners",u:"https://doi.org/10.21203/rs.3.rs-4337380/v1",s:"Under Review",a:"This research reports on a computerized brain-adaptable program, which draws on concepts from neuroscience based on the neuroeducational model (LIRRA). This neuroeducation program was proposed to enhance L2 lexical phrases acquisition, improve reading proficiency, and automatize L2. To address this, reiterative implicit exposure of lexical phrases in an attention- and reward- stimulating setting was key for in this neuroeducation program. This is to allow for procedural memory processing where L2 becomes automatized. In this regard, in a pre-post design, 30 English intermediate-level participants were enrolled to the program for the above purpose. The program was fully online and was implemented using a variety of techniques including interactive reading, riddles, and games. After completing 23 sessions, participants underwent the post- test comprising a lexical-phrases production test, a reading proficiency test, and a writing test. The results revealed that the students’ acquisition and use of lexical phrases significantly enhanced; in like-manner, the students’ level of reading proficiency significantly improved. Importantly, participants showed speed-up performances and considerable automaticity gains."},
+{t:"The Neuroeducation Approach to Language Learning: Exploring Learner Perception",u:"https://jclr.rovedar.com/index.php/JCLR/article/view/148",v:"Journal of contemporary language research",a:"This research reports on L2 learners' perception of a neuroeducation program which was implemented in an earlier study. On the one hand, the learners generally viewed the neuroeducation program to be interesting, enjoyable and highly motivating. Further, the program was described to be a unique, outstanding and a terrific experience. On the other hand, the program was perceived to also be beneficial in terms of improving L2 vocabulary and lexical phrases acquisition as well as improving reading and writing proficiency."},
+{t:"A Neuro-educational Model for Improving Second Language Acquisition in Late Learners",u:"https://doi.org/10.31234/osf.io/8erfc",s:"Under Review",a:"This research proposes a neuroeducational model (LIRRA) for improving L2 proficiency in late learners. The research first introduces neuroeducation; then sheds light on some of the misconceptions pertaining to L2 learning, particularly for late learners. Following this, the research provides an in-depth illustration of five main language brain-adaptable features and provides the rationale behind proposing a neuroeducational model on the premise thereof. Furthermore, this research argues in support of the integration of this neuroeducational model in neuroeducation programs for L2 acquisition in late learners and provides recommendations therein."},
+{t:"Integrative Perspectives on Syntactic and Phonological Processing Deficits in Aphasia",u:"https://doi.org/10.31219/osf.io/hncs2_v1",s:"Under Review",a:"Since aphasia presents a complex disruption of language abilities, often affecting both syntactic and phonological processing, this paper synthesizes findings across behavioral, computation and neuropsychological studies to identify five key themes underlying these impairments: (1) The Pervasive Impact of Canonicity; (2) Reliance on Lexical Heuristics and Reduced Sensitivity to Morpho-Syntax; (3) Phonological Processing as a Foundational Bottleneck; (4) The Exacerbating Role of Cognitive Resource Limitations; (5) Variability and Unsystematic Performance. The review concludes with insights into the clinical implications of these findings and outlines future research directions to advance diagnostic and therapeutic strategies."},
+{t:"On Language Automaticity",s:"In Preparation",a:"This research reviews the literature on language automaticity particularly in relation to practice. It first provides an overview of the different automaticity theories, then it outlines the relation between practice and automaticity as well as between lexical phrases and automaticity. Further, this research introduces a comprehensive review for studies on language automaticity and finally provides implications."},
+{t:"Enhancing Academic Writing Skills With AI",u:"https://doi.org/10.5281/zenodo.11613520",s:"2024",a:"This contribution illustrates an AI learning resource for non-native university students to enhance their academic writing skills using Gemini/Bard. This contribution is published in Abegglen, S., Nerantzi, C., Martínez-Arboleda, A., Karatsiori, M., Atenas, J., & Rowell, C. (Eds.) (2024). Towards AI Literacy: 101+ Creative and Critical Practices, Perspectives and Purposes. #creativeHE."},
+{t:"Implicit Learning in Second Language Acquisition: Insights from Neuroscientific Data",u:"http://doi.org/10.11648/j.cls.20210702.11",s:"2021",a:"This research places emphasis on implicit learning highlighting its importance in second language learning as well as its benefits which extend to language automaticity. The paper presents studies probing the effectiveness of implicit learning on various levels; after which neuroscientific data is presented to account for the advantages and development of implicit learning explicating the memory systems underpinning the learning process as well as the neural processes lying at the core therein."},
+{t:"Lexical Phrases: An Essential Brain-adaptive Requisite for Second Language Acquisition",u:"https://doi.org/10.5296/ijl.v12i3",s:"2020",a:"This research reviews the importance of lexical phrases in language acquisition by providing further insight into their essential role in both first and second language acquisition. Also, Evidence from neurolinguistic and psycholinguistic studies are provided to account for lexical phrases representation and brain-adaptability. Further, this research suggests the implementation of lexical phrases, in general, and the Lexical Approach, in particular, in second language acquisition. Finally, pedagogical implications are proposed."},
+{t:"Causes of Pragmalinguistic Errors in University EFL Learners’ Writings",u:"http://www.jallr.com/index.php/JALLR/article/view/919",s:"2018",a:"This research investigated the causes and frequencies of pragmalinguistic errors in EFL intermediate- and advanced-level students’ writings. Accordingly, essays of EFL university students have been analyzed with respect to pragmalinguistic types, causes and frequencies between low and high levels of language proficiency. The findings reveal that, regarding the frequency of pragmalinguistic errors, both intermediate- and advanced-level students committed the same types of errors with comparable frequencies for some types of errors but different frequencies for others. With regard to the causes of the errors, first language transfer was shown to be the main cause followed by low pragmalinguistic competence. Of note, despite some differences in the frequency of errors between intermediate- and advanced-level students, there was no statistical significance between the two groups which showed the comparable performance, the high influence of L1, and the lack of pragmalinguistic proficiency for even advanced students."},
+{t:"Types of Pragmalinguistic Errors in the Essays of University EFL Learners",u:"http://doi.org/10.21608/aafu.2017.17866",s:"2017",a:"This research employed an in-depth qualitative analysis for the pragmalinguistic errors committed by EFL university learners in their writings. The findings revealed three main types of pragmalinguistic errors: Erroneous Construction of Sentences, Arabic Construction of Sentences and Lexical Errors. The findings also reveal that pragmalinguistic errors were detected in the writings of both EFL intermediate- and advanced-level learners. This research also exemplifies the potential misunderstanding that can arise by inadvertently conveying unintended/wrong meaning to the reader due to the pragmalinguistic errors. To this end, alternative pragmalinguistic constructions are provided for conveying the appropriate meanings and avoiding communication breakdown."}];
+document.getElementById('pubs').innerHTML=PUBS.map((p,i)=>`<article class="pub rv ${i%2?'r':'l'}"><h3>${p.u?`<a href="${esc(p.u)}" target="_blank" rel="noopener">${esc(p.t)}</a>`:esc(p.t)}</h3>${p.s?`<span class="stamp">[${esc(p.s)}]</span>`:''}${p.v?`<div class="venue">[${esc(p.v)}]</div>`:''}<p class="abs">${esc(p.a)}</p><button class="more" type="button">Read more</button>${p.u?`<a class="doi" href="${esc(p.u)}" target="_blank" rel="noopener">Open ↗</a>`:''}</article>`).join('');
+document.getElementById('pubs').addEventListener('click',e=>{const b=e.target.closest('.more');if(!b)return;const a=b.closest('.pub');a.classList.toggle('open');b.textContent=a.classList.contains('open')?'Show less':'Read more'});
+
+/* ---------- beyond collage ---------- */
+const BY=[[1,1280,962],[2,1196,899],[3,1280,962],[4,1280,1071],[5,1280,1072],[6,963,394],[7,1280,800],[8,1280,961],[9,610,864],[10,1280,919],[11,1280,920],[12,1204,438],[13,1280,760],[14,1280,760],[15,1204,1051]];
+document.getElementById('collage').innerHTML=BY.map((b,i)=>{const n=String(b[0]).padStart(2,'0');return `<figure class="photo rv d${i%3}">${i%4===0?'<span class="tape"></span>':''}<img class="zoomable" loading="lazy" src="images/beyond-${n}.jpg" width="${b[1]}" height="${b[2]}" alt="Beyond academia photo ${b[0]}"></figure>`}).join('');
+
+/* ---------- videos (load on click) ---------- */
+document.querySelectorAll('.video[data-yt]').forEach(v=>{const id=v.dataset.yt;const b=document.createElement('button');b.setAttribute('aria-label','Play video');b.style.backgroundImage=`url(https://i.ytimg.com/vi/${id}/hqdefault.jpg)`;b.onclick=()=>{v.innerHTML=`<iframe src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen title="Video"></iframe>`};v.appendChild(b)});
+
+/* ---------- split words for heading animation ---------- */
+document.querySelectorAll('[data-words]').forEach(h=>{const t=h.textContent;h.innerHTML=t.split(' ').map((w,i)=>`<span style="transition-delay:${i*90}ms">${esc(w)}</span>`).join(' ')});
+
+/* ---------- reveal on scroll ---------- */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.14,rootMargin:'0px 0px -6% 0px'});
+function arm(page){page.querySelectorAll('.rv,.words,.draw').forEach(el=>{el.classList.remove('in');io.observe(el)})}
+
+/* ---------- router ---------- */
+const ROUTES=['home','initiatives','research','workshops','trajectory','publications','beyond'];
+const TITLES={home:'Nermin Yusuf',initiatives:'Initiatives',research:'Research',workshops:'Workshops & Presentations',trajectory:'Academic Trajectory',publications:'Publications',beyond:'Beyond Academia'};
+const nav=document.getElementById('nav'),links=document.getElementById('links'),burger=document.getElementById('burger');
+function show(){let h=location.hash.slice(1)||'home';if(!ROUTES.includes(h))h='home';
+ document.querySelectorAll('.page').forEach(p=>p.classList.toggle('on',p.id==='p-'+h));
+ links.querySelectorAll('a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+h));
+ const pg=document.getElementById('p-'+h);nav.dataset.mode=pg.dataset.nav||'dark';
+ document.title=h==='home'?'Nermin Yusuf':TITLES[h]+' - Nermin Yusuf';
+ links.classList.remove('open');burger.setAttribute('aria-expanded','false');
+ window.scrollTo({top:0,behavior:'instant'});requestAnimationFrame(()=>{arm(pg);onScroll()})}
+window.addEventListener('hashchange',show);
+burger.onclick=()=>{const o=links.classList.toggle('open');burger.setAttribute('aria-expanded',o)};
+
+/* nav colour + progress */
+const bar=document.getElementById('progress');
+function onScroll(){const y=scrollY,h=document.documentElement.scrollHeight-innerHeight;bar.style.width=(h>0?y/h*100:0)+'%';
+ nav.classList.toggle('solid',y>40);nav.classList.toggle('onlight',y<=40&&nav.dataset.mode==='light')}
+addEventListener('scroll',onScroll,{passive:true});
+
+/* lightbox */
+const lb=document.getElementById('lb');
+document.addEventListener('click',e=>{const im=e.target.closest('img.zoomable');if(im){lb.querySelector('img').src=im.src;lb.querySelector('img').alt=im.alt;lb.classList.add('on')}});
+lb.onclick=()=>lb.classList.remove('on');addEventListener('keydown',e=>{if(e.key==='Escape')lb.classList.remove('on')});
+document.getElementById('yr').textContent=new Date().getFullYear();
+show();
+</script>
+<script src="https://scholara-series.vercel.app/scholara-logo.js" defer></script>
+</body>
+</html>
